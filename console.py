@@ -37,7 +37,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
 
     def do_destroy(self, line):
-        
+
         arg = line.split()
         length = len(arg)
 
@@ -54,8 +54,22 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
             models.storage.save()
 
-    def do_all(self):
-        pass
+    def do_all(self, line):
+        dictio = models.storage.all()
+        lista_all = []
+        lista_class = []
+        for value in dictio.values():
+            lista_all.append(str(value))
+        if line:
+            if line in ["BaseModel", "User"]:
+                for item in lista_all:
+                    if line in item:
+                        lista_class.append(item)
+                print(lista_class)
+            else:
+                print("** class doesn't exist **")
+        else:
+            print(lista_all)
 
     def do_update(self):
         pass
@@ -71,6 +85,7 @@ class HBNBCommand(cmd.Cmd):
     def emptyline(self):
         'an empty line + ENTER shouldn’t execute anything'
         return False
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
