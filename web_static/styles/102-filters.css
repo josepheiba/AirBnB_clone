@@ -6,6 +6,7 @@
   border-radius: 4px;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .filters button {
@@ -96,4 +97,27 @@ body > div > section > div.locations > ul > li:nth-child(n) {
 
 .locations:hover .popover, .amenities:hover .popover {
   display: block;
+}
+
+@media screen and (max-width: 750px) {
+  body, article {
+    overflow-x: hidden;
+  }
+  .filters .locations {
+    height: 70px;
+    width: 50%;
+  }
+  .filters .amenities {
+    height: 70px;
+    width: 50%;
+  }
+  .filters button {
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .filters {
+    height: unset;
+  }
 }
